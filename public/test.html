@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hi!</h1>
+
+    <div id="result"></div>
+
+    <label for="num">Enter a number</label>
+    <input id="num" type="number">
+
+
+
+    <div id="validateText"></div>
+    <label for="textInput">Text: </label>
+    <input type="text">
+
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
+
+    <script>
+
+
+        $('input[type="text"]').on('change', function(event) {
+
+            const validation = new RegExp(/^[\w\s!]+$/);
+            const isTextValid = validation.test(event.target.value);
+
+            $('#validateText').empty();
+            const validationColor = isTextValid ? 'green' : 'red';
+            const isValid = isTextValid ? 'is' : 'is not'
+            const validationElement = `<div style="color: ${validationColor}">Text ${isValid} valid!</div>`
+
+            $('#validateText').html(validationElement);
+
+        });
+
+
+
+
+        $('input#num').on('change', function(event) {
+            console.log(event.target, 'event target!')
+            const num = event.target.value;
+
+
+            $.ajax({
+                method: 'POST',
+                url: 'http://localhost:9001/anotherTest',
+                data: {
+                    num: num
+                }
+            })
+            .then(function(response) {
+                console.log(response);
+                $('#result').text(response.num);
+            });
+        })
+
+    
+    </script>
+    
+</body>
+</html>
