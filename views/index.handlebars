@@ -26,24 +26,35 @@
             <p></p>
         </div>
     </div>
+    
+
+
     <div class="col-sm">
        <div class="col-xs-6 text-center" class="task">
             <div class="row">
                 {{#each burger_data}}
 
                 {{#unless this.devoured}}
-                
-                <div class="col-xs-9 text-center">
-                    <pre class="newBurger">{{this.id}}. {{this.burger_name}}</pre>
+                <div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="col-xs-9 text-center">
+                    <span class="newBurger">{{this.id}}. {{this.burger_name}}</span>
                 </div>
-                <div class="col-xs-3 text-center">
+    </div>
+    <div class="col-sm">
+        <div class="col-xs-3 text-center">
                     <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
-                        <input type="hidden" name="burger_id" type="text" value="{{this.id}}">
-                        <br>
-                        <button type="submit" class="btn btn-primary">DEVOUR IT!!!</button>
+                        <input type="hidden" name="burger_id" type="text" value="{{this.id }}">
+                        <button type="submit" class="btn btn-outline-dark">  DEVOUR IT!!!</button>
                     </form>
 
                 </div>
+    </div>
+  </div>
+</div>
+               
+             
                 {{/unless}}
                 {{/each}}
             </div>
