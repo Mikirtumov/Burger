@@ -1,12 +1,12 @@
 body, html {
-	background-image: url("../images/bwbg.jpg");
+	background-image: url("../images/bg.jpg");
 	
 
 }
 
 .jumbotron{
 	background-image: url("/assets/images/jtbg.jpg");
-		height:300px;
+		height: 350px;
 		width: 100%;
 		background-repeat: no-repeat;
 		background-size: cover;
